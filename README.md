@@ -22,8 +22,8 @@ The materials provided here are intended to support transparency and reproducibi
 
 The scripts in this repository reproduce the following figures from the manuscript:
 
-- Figure 6  
-- Figures 17–20  
+- Figures 6-7  
+- Figures 16–20  
 
 Each script is named according to the figure it generates (e.g. `figure6_analysis.py`).
 

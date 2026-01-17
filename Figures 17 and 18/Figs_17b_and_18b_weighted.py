@@ -287,8 +287,4 @@ ax2.grid(True, linestyle='--', alpha=0.5)
 ax2.text(0.95, 0.05, '(b)', transform=plt.gca().transAxes,
          fontsize=16, fontweight='bold', ha='right', va='bottom')
 fig2.tight_layout()
-# fig2.savefig('Fig_18_Config2_weighted.png', dpi=300)
-# fig2.savefig('Fig_18_Config2_weighted.eps')
-# fig2.savefig('Fig_18_Config2_weighted.pdf')
-
-# print("Done. Figures saved as PNG and EPS.")
+plt.show()

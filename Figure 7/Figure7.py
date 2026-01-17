@@ -3,8 +3,15 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
 
+try:
+    PROJECT_DIR = Path(__file__).parent.resolve()  # works in .py scripts
+except NameError:
+    PROJECT_DIR = Path.cwd().resolve()             # works in Jupyter
+
+print(PROJECT_DIR)
+
 # load data
-w = np.load('n53_xy_values.npz')
+w = np.load(PROJECT_DIR / 'n53_xy_values.npz')
 
 X_fit = w['x_vals']
 Y_fit_norm = w['y_vals']

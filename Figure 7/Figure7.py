@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.special import voigt_profile
+import pathlib
+from pathlib import Path
 
 try:
     PROJECT_DIR = Path(__file__).parent.resolve()  # works in .py scripts

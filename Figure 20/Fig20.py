@@ -21,7 +21,7 @@ print(PROJECT_DIR)
 
 ################ n=55 ################
 # Load the file
-data1 = np.load(PROJECT_DIR / "n55_new_rabi_plot_data.npz")
+data1 = np.load(PROJECT_DIR / 'n55_new_rabi_plot_data.npz')
 
 rf_field = data1['rf_field']
 rabi_freqs_mhz = data1['rabi_freqs_mhz']
@@ -62,7 +62,7 @@ plt.show()
 
 ################ n=59 ################
 # Load the file
-data1 = np.load(PROJECT_DIR / "n59_new_rabi_plot_data.npz")
+data1 = np.load(PROJECT_DIR / 'n59_new_rabi_plot_data.npz')
 
 rf_field = data1['rf_field']
 rabi_freqs_mhz = data1['rabi_freqs_mhz']
@@ -103,7 +103,7 @@ plt.show()
 
 ################ n=69 ################
 # Load the file
-data1 = np.load(PROJECT_DIR / "n68_new_rabi_plot_data.npz")
+data1 = np.load(PROJECT_DIR / 'n68_new_rabi_plot_data.npz')
 
 rf_field = data1['rf_field']
 rabi_freqs_mhz = data1['rabi_freqs_mhz']
@@ -144,7 +144,7 @@ plt.show()
 
 ################ n=74 ################
 # Load the file
-data1 = np.load(PROJECT_DIR / "n74_new_rabi_plot_data.npz")
+data1 = np.load(PROJECT_DIR / 'n74_new_rabi_plot_data.npz')
 
 rf_field = data1['rf_field']
 rabi_freqs_mhz = data1['rabi_freqs_mhz']
@@ -185,7 +185,7 @@ plt.show()
 
 ################ n=82 ################
 # Load the file
-data1 = np.load(PROJECT_DIR / "n82_new_rabi_plot_data.npz")
+data1 = np.load(PROJECT_DIR / 'n82_new_rabi_plot_data.npz')
 
 rf_field = data1['rf_field']
 rabi_freqs_mhz = data1['rabi_freqs_mhz']

@@ -10,10 +10,19 @@ Dependencies:
 
 import numpy as np
 import matplotlib.pyplot as plt
+import pathlib
+from pathlib import Path
+
+try:
+    PROJECT_DIR = Path(__file__).parent.resolve()  # works in .py scripts
+except NameError:
+    PROJECT_DIR = Path.cwd().resolve()             # works in Jupyter
+
+print(PROJECT_DIR)
 
 ################ n=60 Configuration 1 ################
 # Load the file
-data1 = np.load("n60_conf1_rabi_plot_data.npz")
+data1 = np.load(PROJECT_DIR / 'n60_conf1_rabi_plot_data.npz')
 
 rf_field = data1['rf_field']
 rabi_freqs_mhz = data1['rabi_freqs_mhz']
@@ -53,7 +62,7 @@ plt.show()
 
 ################ n=60 Configuration 2 ################
 # Load the file
-data1 = np.load("n60_conf2_plot_data.npz")
+data1 = np.load(PROJECT_DIR / 'n60_conf2_plot_data.npz')
 
 rf_field = data1['rf_field']
 rabi_freqs_mhz = data1['rabi_freqs_mhz']

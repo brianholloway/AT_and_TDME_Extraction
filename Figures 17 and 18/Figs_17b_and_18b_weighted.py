@@ -24,6 +24,15 @@ from scipy.optimize import curve_fit
 from scipy.interpolate import interp1d
 from sklearn.metrics import mean_squared_error, r2_score
 from scipy.stats import norm
+import pathlib
+from pathlib import Path
+
+try:
+    PROJECT_DIR = Path(__file__).parent.resolve()  # works in .py scripts
+except NameError:
+    PROJECT_DIR = Path.cwd().resolve()             # works in Jupyter
+
+print(PROJECT_DIR)
 
 # -----------------------------
 # Physical constants and setup

@@ -14,7 +14,16 @@ Dependencies:
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import pathlib
+from pathlib import Path
 
+
+try:
+    PROJECT_DIR = Path(__file__).parent.resolve()  # works in .py scripts
+except NameError:
+    PROJECT_DIR = Path.cwd().resolve()             # works in Jupyter
+
+print(PROJECT_DIR)
 # ============================================================
 # Rydberg–Ritz Quantum Defect Fit for nD3/2 and nD5/2
 # Based on Mack et al. (Phys. Rev. A 83, 052515)
@@ -23,8 +32,8 @@ from scipy.optimize import curve_fit
 # ---------------------------
 # Load Mack data from .npz files
 # ---------------------------
-w = np.load('32_xy_vals.npz')
-v = np.load('52_xy_vals.npz')
+w = np.load(PROJECT_DIR / '32_xy_vals.npz')
+v = np.load(PROJECT_DIR / '52_xy_vals.npz')
 
 n_data_32, defect_data_32 = w['d32x'], w['d32y']
 n_data_52, defect_data_52 = v['d52x'], v['d52y']
@@ -46,8 +55,8 @@ n_fit_32 = np.linspace(min(n_data_32), max(n_data_32) + 5, 500)
 defect_fit_32 = rydberg_ritz(n_fit_32, *popt_D32)
 
 # Load parameters for Rubidium from ARC
-data1 = np.load("d32_ARC_data.npz")
-data2 = np.load("d52_ARC_data.npz")
+data1 = np.load(PROJECT_DIR / 'd32_ARC_data.npz')
+data2 = np.load(PROJECT_DIR / 'd52_ARC_data.npz')
 
 # Plot D3/2
 plt.figure(figsize=(10, 6))
@@ -55,7 +64,7 @@ plt.rcParams.update({'font.family': 'serif', 'font.size': 14})
 plt.plot(n_data_32, defect_data_32, 'r.', markersize=20, alpha=0.5,
          label=r'$nD_{3/2}$ defect data from Mack et al. (Phys. Rev. A 83, 052515)')
 plt.plot(n_fit_32, defect_fit_32, 'b-', label='Rydberg–Ritz fit to data from Mack et al.', lw=1.5)
-plt.plot(data1['x0'],data1['y0'], 'y.', markersize=20, alpha=0.5,
+plt.plot(data1['x0'],data1['y0'], 'y^', markersize=15, alpha=0.5,
          label=r'$nD_{3/2}$ defect data from ARC')
 plt.xlabel('Principal Quantum Number $n$')
 plt.ylabel('Quantum Defect $\\delta(n)$')
@@ -64,8 +73,6 @@ plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
 plt.text(0.95, 0.25, '(a)', transform=plt.gca().transAxes,
          fontsize=16, fontweight='bold', ha='right', va='bottom')
-# plt.savefig("d32_defect_fit.png_update", dpi=300)
-# plt.savefig("d32_defect_fit_update.eps")
 
 # Print fitted equation for D3/2
 equation_D32 = (
@@ -94,7 +101,7 @@ plt.rcParams.update({'font.family': 'serif', 'font.size': 14})
 plt.plot(n_data_52, defect_data_52, 'r.', markersize=20, alpha=0.5,
          label=r'$nD_{5/2}$ defect data from Mack et al. (Phys. Rev. A 83, 052515)')
 plt.plot(n_fit_52, defect_fit_52, 'b-', label='Rydberg–Ritz fit to data from Mack et al.', lw=1.5)
-plt.plot(data2['x0'],data2['y0'], 'y.', markersize=20, alpha=0.5,
+plt.plot(data2['x0'],data2['y0'], 'y^', markersize=15, alpha=0.5,
          label=r'$nD_{5/2}$ defect data from ARC')
 plt.xlabel('Principal Quantum Number $n$')
 plt.ylabel('Quantum Defect $\\delta(n)$')
@@ -103,9 +110,7 @@ plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
 plt.text(0.95, 0.25, '(b)', transform=plt.gca().transAxes,
          fontsize=16, fontweight='bold', ha='right', va='bottom')
-# plt.savefig("d52_defect_fit_update.png", dpi=300)
-# plt.savefig("d52_defect_fit_update.eps")
-
+plt.show()
 # Print fitted equation for D5/2
 equation_D52 = (
     f"δ(n) = {popt_D52[0]:.6f} + {popt_D52[1]:.6f}/(n - {popt_D52[0]:.6f})² "

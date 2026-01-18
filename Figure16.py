@@ -266,7 +266,6 @@ cbar.set_label('RF Field Intensity (arb. units)')
 # -----------------------------------------------------------------------------
 # Render (optional: enable saving instead)
 # -----------------------------------------------------------------------------
-plt.show()
 
 # Optional saving (uncomment to write to disk)
 # filename = f'figure_n{n_values[N]}_thresh{interaction_threshold}.pdf'
